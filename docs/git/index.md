@@ -1,5 +1,7 @@
 # Wie sehen die Abläufe auf Github aus?
 
+> :warning: &nbsp; Das Dokument ist im Aufbau und daher noch nicht vollständig!
+
 Unsere Software steht unter der Git Versions Kontrolle. Dazu verwenden wir [GitHub](https://github.com/av-dimag). Hier wird hauptsächlich ein Ingest-Vorbereitungstool für den eCH-0160 Standard entwickelt:
 
 [![ech-0160-dimag-ingest](https://img.shields.io/github/v/release/av-dimag/ech-0160-dimag-ingest?include_prereleases&label=eCH-0160-DIMAG-Ingest)](https://github.com/av-dimag/ech-0160-dimag-ingest)
@@ -12,33 +14,29 @@ Das Vorgehen bei der Entwicklung ist stets dasselbe. Wir folgen den Empfehlungen
 1. [Code Review durchführen](#code-review).
 1. [Branch in `main` mergen](#merge-und-release)
 
+## Sprache
+
+Ich schlage vor, dass die Benennung des Branchs und der Commits in Englisch geschrieben werden.
+
 ## Branch
 
-Branch werden anhand von Issues erstellt. Nachdem jemandem ein Issue zugewiesen wurde, kann über den Link `Create a branch` im jeweiligen Issue schnell ein Branch erstellt und darin gearbeitet werden.
+Branch werden anhand von Issues erstellt. Nachdem jemandem ein Issue zugewiesen wurde, kann über den Link `Create a branch` im jeweiligen Issue schnell ein Branch erstellt und darin gearbeitet werden. Die Benennung des Branchs erfolgt aus dem Titel des Issues, kann aber auch bereits ähnlich der späteren PR-Commit-Message (s. [commits](#commit-message-format)) erfolgen.
+
+Ich kann mir ein System vorstellen, das mit dem Änderungstyp (feat, fix, chore, etc.) beginnt und durch einen Schrägstrich `/` von der restlichen Bezeichnung getrennt wird. Danach folgt der Bereich (scope) und eine kurzer Betreff (subject); alles in kebab-case mit Bindestrich "-".
+
+Der [**Issue** #24](https://github.com/av-dimag/ech-0160-dimag-ingest/issues/24) ist ein Feature Request und hat den folgenden Titel: `feat [workflow]: Startseite mit Ladezone`
+
+Der **Branch** würde dann wie folgt aussehen: `feat/workflow-landingpage`
+
+Und, um es vorwegzunehmen, der spätere **Titel des PRs** sollte wie eine **Commit Message** geschrieben sein. In diesem Beispiel lautet dieser dann: `feat(workflow): Landingpage with drop zone`
 
 >
 > :clipboard: Hier kommt später auch die Thematik Codespace hinzu.
 >
 
-
-
-
-You will work on an own branch to resolve one issue or user story defined on [Jira](https://dasch.atlassian.net/jira). 
-Each of those issues has a DEV-number which has to be used in the branch name:
-
-```text
-wip/<DEV-nr>-<subject>
-```
-
-The prefix `wip` stands for "work in progress" followed by a "/" (slash). The second part starts with the DEV-number 
-followed by a short subject which contains a succinct description of the issue/user story. DEV-number and subject have 
-to be written in kebab-case with "-" (hyphens).
-
 ## Commits
 
-We follow strict rules how a commit message has to look like. This leads to more readable messages that are easy to 
-follow when looking through the project history and release notes. Since release notes are automatically generated from 
-commits, it is important to follow the [Conventional Commit messages](https://www.conventionalcommits.org/).
+Um eine einheitliche Lesbarkeit zu garantieren, insbesondere im Zusammenhang mit den Releases, den Versionen (s. [SemVer](https://semver.org/)) und den Changelogs, müssen die Commit-Nachrichten strikten Regeln folgen. Wir halten uns an [Conventional Commit messages](https://www.conventionalcommits.org/), die folgendes Format vorgeben:
 
 ### Commit Message Format
 
@@ -48,87 +46,78 @@ commits, it is important to follow the [Conventional Commit messages](https://ww
 
 #### Type
 
-Must be one of the following:
+Der Typ muss einer der folgenden sein:
 
-- **fix**: represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
-- **refactor**: represents production code refactoring, and correlates to a **patch**.
-- **feat**: represents a new feature, and correlates to a SemVer **minor**.
-- **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.\
-  ⚠ It is important that the exclamation mark is placed before the colon. For example `feat!: <subject>` or `feat(api-v2)!: <subject>`
-- **docs**: documentation changes (no production code change).
-- **chore**: maintenance tasks (no production code change).
-- **style**: styles update (no production code change).
-- **test**: all about tests: adding, refactoring tests (no production code change).
+- **fix**: bei Bug fixes. Ein solcher Commit ändert die Version auf Ebene **patch**
+- **feat**: bei neuen Features. Ein solcher Commit ändert die Version auf Ebene **minor**.
+- **refactor**: wenn der Code oder die Struktur aufgeräumt/reorganisert wird. Ein solcher Commit ändert die Version auf Ebene **patch**.
+- **feat!**, **fix!**, **refactor!**, etc.: Im Falle eines Breaking Changes wird das Ausrufzeichen verwendet. Ein solcher Commit ändert die Version auf Ebene **major**.
+  :warning: Es ist wichtig, dass das Ausrufezeichen vor dem Doppelpunkt steht; z.Bsp. `feat!: <subject>` oder `feat(workflow)!: <subject>`
+- **docs**: Änderungen an der Dokumentation (keine Änderung am produktiven Code).
+- **chore**: Wartungsarbeiten bspw. Github Actions o.ä. (keine Änderung am produktiven Code).
+- **style**: Design Updates (keine Änderung am produktiven Code).
+- **test**: Alles rund um Tests; auch im Fall von Test-Refactoring (keine Änderung am produktiven Code).
 
-The first four items on this list are taken into account for the release notes and have an effect on the version number.
+Die ersten vier Punkte dieser Liste haben einen Einfluss auf die Versionsnummer und werden in den Release Notes aufgeführt.
 
 #### Scope (optional)
 
-The scope could be anything specifying place of the commit change.
+Die Zuordnung zu einem Bereich (scope) ist optional. Es ist aber sinnvoll, wenn dieser auch gesetzt wird.
+
+>
+> :clipboard: Wir werden noch eine entsprechende Themenliste ausarbeiten.
+>
+
+Bisherige Scopes:
+
+- workflow
+- xml-converter
+- ci/cd
 
 #### Subject
 
-The subject contains succinct description of the change:
+Der Betreff (subject) beinhaltet eine knappe Beschreibung der Änderung:
 
-- use the imperative, present tense: "change" not "changed" nor "changes"
-- don't capitalize first letter
-- no dot (.) at the end
+- man verwendet den englischen *Imperativ*: "change" nicht "changed" oder "changes"
+- Der erste Buchstabe wird *klein geschrieben*
+- Am Ende steht *kein Punkt*
 
 ## Pull Request
 
-### Set title and add description
+### Titel und Beschreibung
 
-A pull request usually resolves one issue or user story defined on [Jira](https://dasch.atlassian.net/jira).
-Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's 
-very important to set the PR title in the correct way, especially because all commits added within the pull request are 
-squashed. Otherwise, PRs with bad titles won't be added to the automatically generated CHANGELOG and release notes. 
-Thus, every PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small 
-modifications. 
+Ein Pull Request entspricht in der Regel mindestens einem Issue oder einer User Story. Da wir für die Versionierung und die Releases die [release-please-action](https://github.com/marketplace/actions/release-please-action) verwenden, ist es sehr wichtig, dass der PR Titel korrekt geschrieben wird. Der Titel wird für die Commit Message des Merges übernommen. Deshalb muss er, wie unter [Commits](#commits) definiert, entsprechend geschrieben werden; s. auch das Beispiel unter [Branch](#branch).
+Wird der Titel falsch geschrieben, wird der PR später nicht im Changelog oder in den Release Notes aufgelistet!
 
-#### PR Title Format
+In der Beschreibung wird immer der zugehörige Issue verlinkt. Dazu wird eines der [Github-Schlüsselwörter](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests) `resolves`, `closes` etc. gefolgt von der Issue Nummer.
 
 ```text
-<type>(<scope>): <subject> (<DEV-no.>)
+resolves #42
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` 
-(in brackets and without space between type and scope). `<subject>` should be Jira task title or its short version. At 
-the end of the PR title add inside the brackets `<DEV-no.>`, which represents the number of the task(s) related to the 
-PR. Here is an example:
+In diesem Beispiel wird der Issue Nr. 42 mit dem PR beidseitig verknüpft und nach dem Merge ebenfalls automatisch geschlossen.
 
-```text
-docs(contribution): example pull request title (DEV-001)
-```
 
-The PR description should contain important information for its reviewers. Don't copy/paste the Jira task description 
-here. Instead, start the description by adding the following:
-
-```text
-Resolves <DEV-no.>
-```
-
-GitHub's [Autolink Setting](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/configuring-autolinks-to-reference-external-resources) 
-will automatically generate a link to the Jira issue.
 
 ### Add a label (optional)
 
-This step is optional, since it has no impact on the release process anymore. However, adding at least one of the 
+This step is optional, since it has no impact on the release process anymore. However, adding at least one of the
 corresponding labels to your PR will help quickly realize its purpose:
 
 - **breaking**: breaking changes.
 - **enhancement**: new feature.
 - **bug**: a bug fix.
-- **styling** update style (no production code change).
+- **styling** update style (keine Änderung am produktiven Code).
 - **documentation**: changes to the documentation.
-- **testing**: all about tests: adding, refactoring tests (no production code change).
+- **testing**: all about tests: adding, refactoring tests (keine Änderung am produktiven Code).
 - **refactor**: refactoring production code.
-- **chore**: maintenance tasks (no production code change).
+- **chore**: maintenance tasks (keine Änderung am produktiven Code).
 - **dependencies**: update a dependency package version.
 
 ### Make a draft
 
-Please [convert the pull request to draft](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) 
-as long it isn't ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), 
+Please [convert the pull request to draft](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft)
+as long it isn't ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review),
 click on the corresponding button "Ready for review".
 
 ### Branch protection rules
@@ -136,10 +125,10 @@ click on the corresponding button "Ready for review".
 The main branch of each repo (it's usually the `main` branch) is protected by the following rules:
 
 - Require pull request reviews before merging
-    - At least from one reviewer
+  - At least from one reviewer
 - Require status checks to pass before merging
-    - Require branches to be up-to-date before merging
-    - Status checks e.g. tests defined in each repository's CI
+  - Require branches to be up-to-date before merging
+  - Status checks e.g. tests defined in each repository's CI
 
 When the PR is merged, the branch will be deleted automatically.
 
@@ -153,25 +142,19 @@ We use [GitHub actions](https://github.com/features/actions) to automate some pr
 
 ### Run tests
 
-With each push to GitHub, the tests of the repository are executed. Successful tests are needed to merge code into the 
+With each push to GitHub, the tests of the repository are executed. Successful tests are needed to merge code into the
 repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
 
 # Merge und Release
 
-
 ### Prepare release
 
-We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release. 
-This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, 
-it creates a release PR which updates itself with each push into main branch following the commit messages. It's 
+We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release.
+This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so,
+it creates a release PR which updates itself with each push into main branch following the commit messages. It's
 important to use the defined rules from [above](#git-commit-guidelines) in all commits and in [PR titles](#pr-title-format).
 
 ### Create release
 
-When we are ready to tag a release, simply merge the release PR. This will create a release on GitHub, builds the npm 
+When we are ready to tag a release, simply merge the release PR. This will create a release on GitHub, builds the npm
 package or the docker image and publishes on the corresponding platform.
-
-[![DSP-API Docker Image](https://img.shields.io/docker/v/daschswiss/knora-api?label=DSP-API%20Docker%20Image)](https://hub.docker.com/r/daschswiss/knora-api)
-[![DSP-JS NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-js?label=DSP-JS%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-js)
-[![DSP-UI NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui?label=DSP-UI%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
-[![DSP-APP Docker Image](https://img.shields.io/docker/v/daschswiss/dsp-app?label=DSP-APP%20Docker%20Image)](https://hub.docker.com/r/daschswiss/dsp-app)

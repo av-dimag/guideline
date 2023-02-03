@@ -1,8 +1,14 @@
 # Wie schreiben wir Code?
 
+> :warning: &nbsp; Das Dokument ist im Aufbau und daher noch nicht vollständig!
+
 Die meisten Spielregeln betreffend Schreibweisen im Code sind bereits im `.editorconfig` und im `.eslintrc.js` im jeweiligen Repository definiert. Dennoch tragen wir hier die paar Regeln zusammen, um einen einheitlich aussehenden Code zu erhalten.
 
-> :warning: &nbsp; Das Dokument ist im Aufbau und daher noch nicht vollständig!
+## Sprache
+
+Bezeichnung von Variablen und Funktionen, aber auch Kommentare müssen in Englisch geschrieben sein. Variable- und Funktionsbezeichnungen sollten kurz, aber noch immer verständlich benannt werden; nicht geläufige Abkürzungen sollten vermieden werden.
+
+[Commit Messages](../git/#commits) werden ebenfalls in Englisch geschrieben.
 
 ## Format
 
