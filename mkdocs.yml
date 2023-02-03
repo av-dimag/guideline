@@ -36,6 +36,8 @@ theme:
     - search.highlight
 markdown_extensions:
   - attr_list
-  - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 extra_css:
   - "assets/style/theme.css"
