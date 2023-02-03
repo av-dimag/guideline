@@ -1,0 +1,4 @@
+mkdocs==1.4.2
+mkdocs-material==9.0.10
+mkdocs-include-markdown-plugin==4.0.3
+mkdocs-git-revision-date-plugin==0.3.2
