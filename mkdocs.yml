@@ -1,9 +1,13 @@
 site_name: AV DIMAG Developer Guidelines
 
+repo_url: https://github.com/av-dimag/ech-0160-dimag-ingest
+repo_name: av-dimag/ech-0160-dimag-ingest
+
 nav:
-  - Overview: index.md
+  - Start: index.md
   - Code: code/index.md
   - Git: git/index.md
+  - Agile: agile/index.md
 
 plugins:
   - include-markdown
@@ -13,20 +17,25 @@ plugins:
 theme:
   name: material
   # custom_dir: overrides
-  logo: "assets/images/logo.png"
-  favicon: "assets/images/logo.png"
-  palette:
-    - scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+  # logo: "assets/images/logo.png"
+  # favicon: "assets/images/logo.png"
+  icon:
+    repo: fontawesome/brands/git-alt
+  # palette:
+  #   - scheme: default
+  #     toggle:
+  #       icon: material/brightness-7
+  #       name: Switch to dark mode
+  #   - scheme: slate
+  #     toggle:
+  #       icon: material/brightness-4
+  #       name: Switch to light mode
   features:
     - navigation.tabs
     - search.suggest
     - search.highlight
-# extra_css:
-  # - "assets/style/theme.css"
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji
+extra_css:
+  - "assets/style/theme.css"

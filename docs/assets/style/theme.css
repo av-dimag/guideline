@@ -1,0 +1,30 @@
+
+
+[data-md-color-scheme="default"] {
+    --md-primary-fg-color: rgb(88, 142, 181);
+    --md-accent-fg-color: rgb(238, 205, 20);
+    /* --md-default-bg-color: rgb(235, 235, 235); */
+  }
+/*   
+  [data-md-color-scheme="slate"] {
+    --md-primary-fg-color: rgb(116, 162, 207);
+    --md-accent-fg-color: rgb(0, 94, 84);
+    --md-default-bg-color: rgb(36, 37, 46);
+  } */
+  
+  .md-header,
+  .md-tabs {
+    background-color: rgb(88, 142, 181) !important;
+  }
+  
+  .md-content a {
+    text-decoration: underline;
+  }
+  
+  /* h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: bold;
+    padding-top: 50px;
+  } */
