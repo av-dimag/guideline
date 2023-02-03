@@ -17,8 +17,9 @@ Das Vorgehen bei der Entwicklung ist stets dasselbe. Wir folgen den Empfehlungen
 Branch werden anhand von Issues erstellt. Nachdem jemandem ein Issue zugewiesen wurde, kann über den Link `Create a branch` im jeweiligen Issue schnell ein Branch erstellt und darin gearbeitet werden.
 
 >
-> :information: Hier kommt später auch die Thematik Codespace hinzu.
+> :i: Hier kommt später auch die Thematik Codespace hinzu.
 >
+
 
 
 
