@@ -9,10 +9,18 @@ Das Vorgehen bei der Entwicklung ist stets dasselbe. Wir folgen den Empfehlungen
 1. [Neuen Branch von "main" erstellen](#branch).
 1. [Commits schreiben](#commits).
 1. [Pull Request öffnen](#pull-request).
-2. [Code Review durchführen](#code-review).
-3. [Branch in `main` mergen](#merge-und-release)
+1. [Code Review durchführen](#code-review).
+1. [Branch in `main` mergen](#merge-und-release)
 
 ## Branch
+
+Branch werden anhand von Issues erstellt. Nachdem jemandem ein Issue zugewiesen wurde, kann über den Link `Create a branch` im jeweiligen Issue schnell ein Branch erstellt und darin gearbeitet werden.
+
+>
+> :info: Hier kommt später auch die Thematik Codespace hinzu.
+>
+
+
 
 You will work on an own branch to resolve one issue or user story defined on [Jira](https://dasch.atlassian.net/jira). 
 Each of those issues has a DEV-number which has to be used in the branch name:

@@ -17,6 +17,11 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
+      - name: Setup cache
+        uses: actions/cache@v3
+        with:
+          key: ${{ github.ref }}
+          path: .cache
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Build docs
@@ -35,7 +40,7 @@ jobs:
         with:
           python-version: 3.x
       - name: Setup cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           key: ${{ github.ref }}
           path: .cache
