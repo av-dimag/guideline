@@ -2,5 +2,5 @@
 
 > :warning: &nbsp; Die Seite ist im Aufbau und daher noch nicht vollständig!
 
-Um gemeinsam am selben Strang zu ziehen und dies in dieselbe Richtung ist es wichtig, dass wir ein paar Spielregeln betreffend Code schreiben, Git-/Release Prozess und Arbeitsaufteilung definieren.
+Um gemeinsam am selben Strang zu ziehen und dies in dieselbe Richtung, ist es wichtig, dass wir ein paar Spielregeln definieren betreffend [Code schreiben](/code), [Git- und Release Prozess](/git), sowie [Arbeitsaufteilung](/agile).
 
