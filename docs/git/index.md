@@ -38,15 +38,15 @@ Und, um es vorwegzunehmen, der spätere **Titel des PRs** sollte wie eine **Comm
 
 Um eine einheitliche Lesbarkeit zu garantieren, insbesondere im Zusammenhang mit den Releases, den Versionen (s. [SemVer](https://semver.org/)) und den Changelogs, müssen die Commit-Nachrichten strikten Regeln folgen. Wir halten uns an [Conventional Commit messages](https://www.conventionalcommits.org/), die folgendes Format vorgeben:
 
-### Commit Message Format
+### Format eines Commits
 
 ```text
 <type>(<scope>): <subject>
 ```
 
-#### Type
+#### Typ (type)
 
-Der Typ muss einer der folgenden sein:
+Der Typ muss einer der Folgenden sein:
 
 - **fix**: bei Bug fixes. Ein solcher Commit ändert die Version auf Ebene **patch**
 - **feat**: bei neuen Features. Ein solcher Commit ändert die Version auf Ebene **minor**.
@@ -60,7 +60,7 @@ Der Typ muss einer der folgenden sein:
 
 Die ersten vier Punkte dieser Liste haben einen Einfluss auf die Versionsnummer und werden in den Release Notes aufgeführt.
 
-#### Scope (optional)
+#### Bereich (scope; optional)
 
 Die Zuordnung zu einem Bereich (scope) ist optional. Es ist aber sinnvoll, wenn dieser auch gesetzt wird.
 
@@ -74,7 +74,7 @@ Bisherige Scopes:
 - xml-converter
 - ci/cd
 
-#### Subject
+#### Betreff (subject)
 
 Der Betreff (subject) beinhaltet eine knappe Beschreibung der Änderung:
 
@@ -97,64 +97,54 @@ resolves #42
 
 In diesem Beispiel wird der Issue Nr. 42 mit dem PR beidseitig verknüpft und nach dem Merge ebenfalls automatisch geschlossen.
 
+### Label (optional)
 
+Das Setzen eines Labels ist optional, ist aber sicher hilfreich beim Sortieren und Auffinden bestimmter Pull Requests. Im Release Prozess hat es jedenfalls keinen Einfluss mehr.
 
-### Add a label (optional)
+- **breaking**: Breaking Changes.
+- **enhancement**: Neue Features.
+- **bug**: Bug fixes.
+- **styling** Style resp. Design Updates (keine Änderung am produktiven Code).
+- **documentation**: Änderungen an der Dokumentation.
+- **testing**: Alles mit Tests (keine Änderung am produktiven Code).
+- **refactor**: Simples Überarbeiten des Codes.
+- **chore**: Wartungsarbeiten, insbesondere Github betreffend (CI/CD) (keine Änderung am produktiven Code).
+- **dependencies**: Updates von Paketversionen.
 
-This step is optional, since it has no impact on the release process anymore. However, adding at least one of the
-corresponding labels to your PR will help quickly realize its purpose:
+### Entwurf
 
-- **breaking**: breaking changes.
-- **enhancement**: new feature.
-- **bug**: a bug fix.
-- **styling** update style (keine Änderung am produktiven Code).
-- **documentation**: changes to the documentation.
-- **testing**: all about tests: adding, refactoring tests (keine Änderung am produktiven Code).
-- **refactor**: refactoring production code.
-- **chore**: maintenance tasks (keine Änderung am produktiven Code).
-- **dependencies**: update a dependency package version.
+Bitte [konvertiere den Pull Request zu einem Entwurf](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft)
+so lange dieser nicht parat für den Review ist. Sobald dies der Fall ist, wird der [Entwurfsstatus wieder entfernt](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review),
+klicke dazu auf die entsprechende Schaltfäche: "Ready for review".
 
-### Make a draft
+### Geschützter Branch
 
-Please [convert the pull request to draft](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft)
-as long it isn't ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review),
-click on the corresponding button "Ready for review".
+Der Hauptbranch `main` in jedem Repository ist geschützt. Folgende Regeln müssen vor einem Merge eingehalten werden:
 
-### Branch protection rules
+- Mindestens ein Code Review wird benötigt
+- Status Checks:
+  - Branch muss von Seiten `main` aktualisiert sein
+  - Test- und Build-Prozess in den Github Actions (CI/CD) müssen erfolgreich sein
 
-The main branch of each repo (it's usually the `main` branch) is protected by the following rules:
+Nach dem Mergen wird der entsprechende Branch automatisch gelöscht.
 
-- Require pull request reviews before merging
-  - At least from one reviewer
-- Require status checks to pass before merging
-  - Require branches to be up-to-date before merging
-  - Status checks e.g. tests defined in each repository's CI
+### Code Review
 
-When the PR is merged, the branch will be deleted automatically.
+- Ein Reviewers soll neben dem Code, der Funktionalität auch die [PR Titel Einstellungen](#titel-und-beschreibung) prüfen, damit [Release-Please](#release-vorbereiten) einwandfrei funktioniert.
 
-## Code Review
+## GitHub Actions (CI/CD)
 
-- Reviewers should pay attention to proper [PR title setting](#pr-title-format).
+Wir benutzen [GitHub Actions](https://github.com/features/actions), um automatisch Tests, Releases und das Deployment durchzuführen.
 
-## General GitHub actions workflows (CI)
+### Tests
 
-We use [GitHub actions](https://github.com/features/actions) to automate some processes.
+Mit jedem Push nach GitHub werden "Builds" und Tests ausgeführt. Diese müssen erfolgreich durchlaufen, bevor neuer Code in den Hauptbranch gemergt werden kann (s. [Geschützter Branch](#geschützter-branch)).
 
-### Run tests
+### Release vorbereiten
 
-With each push to GitHub, the tests of the repository are executed. Successful tests are needed to merge code into the
-repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
+Wir benutzen [release-please-action](https://github.com/marketplace/actions/release-please-action), um einen Release vorzubereiten. Dieses GH Action Skript erstellt automatisch die `CHANGELOG.md`-Datei, macht Releases und setzt die korrekte Versionsnummer z.B. im `package.json`. Release-Please arbeitet in zwei Schritten: Zuerst erstellt resp. aktualisiert die Action nach jedem Merge in den Hauptbranch einen sogenannten Release-PR. Wenn dieser PR dann gemergt wird, erstellt die Action einen Release-Tag und bildet daraus den Release selbst.
+Um einen sauberen Ablauf und übersichtliche Release Notes zu gewährleisten, ist das Beachten der oben erwähnten [Commit-Regeln](#commits) in den [PR Titeln](#titel-und-beschreibung) zwindend notwendig.
 
-# Merge und Release
+### Release erstellen
 
-### Prepare release
-
-We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release.
-This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so,
-it creates a release PR which updates itself with each push into main branch following the commit messages. It's
-important to use the defined rules from [above](#git-commit-guidelines) in all commits and in [PR titles](#pr-title-format).
-
-### Create release
-
-When we are ready to tag a release, simply merge the release PR. This will create a release on GitHub, builds the npm
-package or the docker image and publishes on the corresponding platform.
+Sobald wir für einen neuen Release bereit sind, wird der Release PR durchgesehen (Review) und daraufhin gemergt. Dadurch wird automatisch der entsrpechende Release publiziert und das Produkt entsprechend bereitgestellt.
