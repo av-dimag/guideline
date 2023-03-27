@@ -2,7 +2,7 @@
 
 > :warning: &nbsp; Das Dokument ist im Aufbau und daher noch nicht vollständig!
 
-Die meisten Spielregeln betreffend Schreibweisen im Code sind bereits im `.editorconfig` und im `.eslintrc.js` im jeweiligen Repository definiert. Dennoch tragen wir hier die paar Regeln zusammen, um einen einheitlich aussehenden Code zu erhalten.
+Die meisten Spielregeln betreffend Schreibweisen im Code sind bereits in `.editorconfig` und in `.eslintrc.js` im jeweiligen Repository definiert. Dennoch tragen wir hier die paar Regeln zusammen, um einen einheitlich aussehenden Code zu erhalten.
 
 ## Sprache
 
