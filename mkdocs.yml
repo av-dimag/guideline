@@ -8,6 +8,7 @@ nav:
   - Code: code/index.md
   - Git: git/index.md
   - Agile: agile/index.md
+  - Tests: tests/index.md
 
 plugins:
   - include-markdown
