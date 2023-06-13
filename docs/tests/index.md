@@ -8,7 +8,7 @@ Die einzelnen Testcases werden im Repository-spezifischen [Wiki](https://github.
 
 ## Testcase-Beschreibung im Wiki
 
-Der Titel der einzelnen Wiki-Seite sollte lediglich "T nn" (bspw. T 01) beinhaltet. Dies hilft uns, um einfach auf die einzelnen Testcases verlinken zu können. In [Issues](https://github.com/av-dimag/ech-0160-dimag-ingest/issues), wie auch in den [Discussions](https://github.com/av-dimag/ech-0160-dimag-ingest/discussions) reicht das Schreiben von [`T-01`](https://github.com/av-dimag/ech-0160-dimag-ingest/wiki/T-01) und der Link zum ersten Testcase wird automatisch gesetzt (ähnlich wie bspw. `#42`, um auf ein Issue, eine Discussion oder einen Pull Request zu verweisen). Leider funktionieren diese automatischen Verlinkungen nicht im Wiki selbst. Die andere Problematik ist, dass im Titel selbst kein "-" geschrieben werden kann, resp. wird dieser beim Speichern automatisch entfernt, ist aber bei der automatischen Verlinkung sehr wichtig!
+Der Titel der einzelnen Wiki-Seite sollte lediglich "T nn" (bspw. T 01) beinhaltet. Dies hilft uns, um einfach auf die einzelnen Testcases verlinken zu können. In [Issues](https://github.com/av-dimag/ech-0160-dimag-ingest/issues), wie auch in den [Discussions](https://github.com/av-dimag/ech-0160-dimag-ingest/discussions) reicht das Schreiben von [`T-01`](https://github.com/av-dimag/ech-0160-dimag-ingest/wiki/T-01) und der Link zum ersten Testcase wird automatisch gesetzt (ähnlich wie bspw. `#42`, um auf ein Issue, eine Discussion oder einen Pull Request zu verweisen). Leider funktionieren diese automatischen Verlinkungen nicht im Wiki selbst. Die andere Problematik ist, dass im Titel kein "-" geschrieben werden kann, resp. wird dieser beim Speichern automatisch entfernt, ist aber bei der automatischen Verlinkung sehr wichtig!
 
 Die Seite wird (wie bei Issues und Discussions) in [Markdown](https://www.markdownguide.org/) geschrieben.
 
@@ -37,16 +37,16 @@ Die Seite wird (wie bei Issues und Discussions) in [Markdown](https://www.markdo
 
 ## Protokollierung
 
-Die Protokollierung erfolgt über das [Discussion-Formular "Test Report"](https://github.com/av-dimag/ech-0160-dimag-ingest/discussions/new?category=test-report).
+Die Protokollierung erfolgt über das 
+[Discussion-Formular "Test Report"](https://github.com/av-dimag/ech-0160-dimag-ingest/discussions/new?category=test-report).
 ```
 
 ## Ablauf der Tests
 
 Gemäss Beschreibung vorgehen und das erwartete Ergebnis überprüfen.
 
-Im Repository <https://github.com/av-dimag/ech-0160-testdaten> befinden sich Test-SIPs (geordnet nach eCH-0160 Version), die verwendet werden können. Es empfiehlt sich aber auch, dass mit eigenen, richtigen Daten getestet wird, um unvorgesehenes besser abzufangen und zu korrigieren.
+Im Repository <https://github.com/av-dimag/ech-0160-testdaten> befinden sich Test-SIPs (geordnet nach eCH-0160 Version), die verwendet werden können. Es empfiehlt sich aber, dass mit eigenen, richtigen Daten getestet wird, um Unvorgesehenes besser abzufangen und später korrigieren zu können.
 
 ## Protokollierung in den Discussions
 
-Die Tests werden innerhalb der Discussion in der Kategorie "Test Report" protokolliert. Dazu steht ein vorgefertigtes Formular zur Verfügung. Innerhalb dieser Kategorie auf "New Discussion" klicken oder folgendem Link folgen: <https://github.com/av-dimag/ech-0160-dimag-ingest/discussions/new?category=test-report>.
-
+Die Tests werden innerhalb der Discussion in der Kategorie "Test Report" protokolliert. Dazu steht ein vorgefertigtes Formular zur Verfügung, das innerhalb erwähnter Kategorie über den Button "New Discussion" oder über folgenden Link geöffnet werden kann: <https://github.com/av-dimag/ech-0160-dimag-ingest/discussions/new?category=test-report>.
