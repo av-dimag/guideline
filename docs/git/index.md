@@ -147,4 +147,4 @@ Um einen sauberen Ablauf und übersichtliche Release Notes zu gewährleisten, is
 
 ### Release erstellen
 
-Sobald wir für einen neuen Release bereit sind, wird der Release PR durchgesehen (Review) und daraufhin gemergt. Dadurch wird automatisch der entsrpechende Release publiziert und das Produkt entsprechend bereitgestellt.
+Sobald wir für einen neuen Release bereit sind, wird der Release PR durchgesehen (Review) und daraufhin zusammengeführt (merge). Dadurch wird automatisch der entsrpechende Release publiziert und das Produkt innert kürzester Zeit bereitgestellt. Der Download wird dem [Release angehängt](https://github.com/av-dimag/ech-0160-dimag-ingest/releases/latest).
