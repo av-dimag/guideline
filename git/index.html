@@ -1,0 +1,888 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../code/">
+      
+      
+        <link rel="next" href="../agile/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.10">
+    
+    
+      
+        <title>Git - AV DIMAG Developer Guidelines</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/style/theme.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wie-sehen-die-ablaufe-auf-github-aus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AV DIMAG Developer Guidelines" class="md-header__button md-logo" aria-label="AV DIMAG Developer Guidelines" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AV DIMAG Developer Guidelines
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/av-dimag/ech-0160-dimag-ingest" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    av-dimag/ech-0160-dimag-ingest
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Start
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../code/" class="md-tabs__link">
+      Code
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Git
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../agile/" class="md-tabs__link">
+      Agile
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../tests/" class="md-tabs__link">
+      Tests
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AV DIMAG Developer Guidelines" class="md-nav__button md-logo" aria-label="AV DIMAG Developer Guidelines" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AV DIMAG Developer Guidelines
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/av-dimag/ech-0160-dimag-ingest" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    av-dimag/ech-0160-dimag-ingest
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        Code
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Git
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprache" class="md-nav__link">
+    Sprache
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    Branch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commits" class="md-nav__link">
+    Commits
+  </a>
+  
+    <nav class="md-nav" aria-label="Commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-eines-commits" class="md-nav__link">
+    Format eines Commits
+  </a>
+  
+    <nav class="md-nav" aria-label="Format eines Commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typ-type" class="md-nav__link">
+    Typ (type)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bereich-scope-optional" class="md-nav__link">
+    Bereich (scope; optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#betreff-subject" class="md-nav__link">
+    Betreff (subject)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request" class="md-nav__link">
+    Pull Request
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#titel-und-beschreibung" class="md-nav__link">
+    Titel und Beschreibung
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-optional" class="md-nav__link">
+    Label (optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entwurf" class="md-nav__link">
+    Entwurf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geschutzter-branch" class="md-nav__link">
+    Geschützter Branch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-review" class="md-nav__link">
+    Code Review
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions-cicd" class="md-nav__link">
+    GitHub Actions (CI/CD)
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions (CI/CD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-vorbereiten" class="md-nav__link">
+    Release vorbereiten
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-erstellen" class="md-nav__link">
+    Release erstellen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agile/" class="md-nav__link">
+        Agile
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/" class="md-nav__link">
+        Tests
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprache" class="md-nav__link">
+    Sprache
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    Branch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commits" class="md-nav__link">
+    Commits
+  </a>
+  
+    <nav class="md-nav" aria-label="Commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-eines-commits" class="md-nav__link">
+    Format eines Commits
+  </a>
+  
+    <nav class="md-nav" aria-label="Format eines Commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typ-type" class="md-nav__link">
+    Typ (type)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bereich-scope-optional" class="md-nav__link">
+    Bereich (scope; optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#betreff-subject" class="md-nav__link">
+    Betreff (subject)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request" class="md-nav__link">
+    Pull Request
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#titel-und-beschreibung" class="md-nav__link">
+    Titel und Beschreibung
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-optional" class="md-nav__link">
+    Label (optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entwurf" class="md-nav__link">
+    Entwurf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geschutzter-branch" class="md-nav__link">
+    Geschützter Branch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-review" class="md-nav__link">
+    Code Review
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions-cicd" class="md-nav__link">
+    GitHub Actions (CI/CD)
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions (CI/CD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-vorbereiten" class="md-nav__link">
+    Release vorbereiten
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-erstellen" class="md-nav__link">
+    Release erstellen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="wie-sehen-die-ablaufe-auf-github-aus">Wie sehen die Abläufe auf Github aus?</h1>
+<blockquote>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> &nbsp; Das Dokument ist im Aufbau und daher noch nicht vollständig!</p>
+</blockquote>
+<p>Unsere Software steht unter der Git Versions Kontrolle. Dazu verwenden wir <a href="https://github.com/av-dimag">GitHub</a>. Hier wird hauptsächlich ein Ingest-Vorbereitungstool für den eCH-0160 Standard entwickelt:</p>
+<p><a href="https://github.com/av-dimag/ech-0160-dimag-ingest"><img alt="ech-0160-dimag-ingest" src="https://img.shields.io/github/v/release/av-dimag/ech-0160-dimag-ingest?include_prereleases&amp;label=eCH-0160-DIMAG-Ingest" /></a></p>
+<p>Das Vorgehen bei der Entwicklung ist stets dasselbe. Wir folgen den Empfehlungen von <a href="https://docs.github.com/en/get-started/quickstart/github-flow">GitHub flow</a>:</p>
+<ol>
+<li><a href="#branch">Neuen Branch von "main" erstellen</a>.</li>
+<li><a href="#commits">Commits schreiben</a>.</li>
+<li><a href="#pull-request">Pull Request öffnen</a>.</li>
+<li><a href="#code-review">Code Review durchführen</a>.</li>
+<li><a href="#merge-und-release">Branch in <code>main</code> mergen</a></li>
+</ol>
+<h2 id="sprache">Sprache</h2>
+<p>Ich schlage vor, dass die Benennung des Branchs und der Commits in Englisch geschrieben werden.</p>
+<h2 id="branch">Branch</h2>
+<p>Branch werden anhand von Issues erstellt. Nachdem jemandem ein Issue zugewiesen wurde, kann über den Link <code>Create a branch</code> im jeweiligen Issue schnell ein Branch erstellt und darin gearbeitet werden. Die Benennung des Branchs erfolgt aus dem Titel des Issues, kann aber auch bereits ähnlich der späteren PR-Commit-Message (s. <a href="#commit-message-format">commits</a>) erfolgen.</p>
+<p>Ich kann mir ein System vorstellen, das mit dem Änderungstyp (feat, fix, chore, etc.) beginnt und durch einen Schrägstrich <code>/</code> von der restlichen Bezeichnung getrennt wird. Danach folgt der Bereich (scope) und eine kurzer Betreff (subject); alles in kebab-case mit Bindestrich "-".</p>
+<p>Der <a href="https://github.com/av-dimag/ech-0160-dimag-ingest/issues/24"><strong>Issue</strong> #24</a> ist ein Feature Request und hat den folgenden Titel: <code>feat [workflow]: Startseite mit Ladezone</code></p>
+<p>Der <strong>Branch</strong> würde dann wie folgt aussehen: <code>feat/workflow-landingpage</code></p>
+<p>Und, um es vorwegzunehmen, der spätere <strong>Titel des PRs</strong> sollte wie eine <strong>Commit Message</strong> geschrieben sein. In diesem Beispiel lautet dieser dann: <code>feat(workflow): Landingpage with drop zone</code></p>
+<blockquote>
+<p><img alt="📋" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4cb.svg" title=":clipboard:" /> Hier kommt später auch die Thematik Codespace hinzu.
+</p>
+</blockquote>
+<h2 id="commits">Commits</h2>
+<p>Um eine einheitliche Lesbarkeit zu garantieren, insbesondere im Zusammenhang mit den Releases, den Versionen (s. <a href="https://semver.org/">SemVer</a>) und den Changelogs, müssen die Commit-Nachrichten strikten Regeln folgen. Wir halten uns an <a href="https://www.conventionalcommits.org/">Conventional Commit messages</a>, die folgendes Format vorgeben:</p>
+<h3 id="format-eines-commits">Format eines Commits</h3>
+<pre><code class="language-text">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+</code></pre>
+<h4 id="typ-type">Typ (type)</h4>
+<p>Der Typ muss einer der Folgenden sein:</p>
+<ul>
+<li><strong>fix</strong>: bei Bug fixes. Ein solcher Commit ändert die Version auf Ebene <strong>patch</strong></li>
+<li><strong>feat</strong>: bei neuen Features. Ein solcher Commit ändert die Version auf Ebene <strong>minor</strong>.</li>
+<li><strong>refactor</strong>: wenn der Code oder die Struktur aufgeräumt/reorganisert wird. Ein solcher Commit ändert die Version auf Ebene <strong>patch</strong>.</li>
+<li><strong>feat!</strong>, <strong>fix!</strong>, <strong>refactor!</strong>, etc.: Im Falle eines Breaking Changes wird das Ausrufzeichen verwendet. Ein solcher Commit ändert die Version auf Ebene <strong>major</strong>.
+  <img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Es ist wichtig, dass das Ausrufezeichen vor dem Doppelpunkt steht; z.Bsp. <code>feat!: &lt;subject&gt;</code> oder <code>feat(workflow)!: &lt;subject&gt;</code></li>
+<li><strong>docs</strong>: Änderungen an der Dokumentation (keine Änderung am produktiven Code).</li>
+<li><strong>chore</strong>: Wartungsarbeiten bspw. Github Actions o.ä. (keine Änderung am produktiven Code).</li>
+<li><strong>style</strong>: Design Updates (keine Änderung am produktiven Code).</li>
+<li><strong>test</strong>: Alles rund um Tests; auch im Fall von Test-Refactoring (keine Änderung am produktiven Code).</li>
+</ul>
+<p>Die ersten vier Punkte dieser Liste haben einen Einfluss auf die Versionsnummer und werden in den Release Notes aufgeführt.</p>
+<h4 id="bereich-scope-optional">Bereich (scope; optional)</h4>
+<p>Die Zuordnung zu einem Bereich (scope) ist optional. Es ist aber sinnvoll, wenn dieser auch gesetzt wird.</p>
+<blockquote>
+<p><img alt="📋" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4cb.svg" title=":clipboard:" /> Wir werden noch eine entsprechende Themenliste ausarbeiten.
+</p>
+</blockquote>
+<p>Bisherige Scopes:</p>
+<ul>
+<li>workflow</li>
+<li>xml-converter</li>
+<li>ci/cd</li>
+</ul>
+<h4 id="betreff-subject">Betreff (subject)</h4>
+<p>Der Betreff (subject) beinhaltet eine knappe Beschreibung der Änderung:</p>
+<ul>
+<li>man verwendet den englischen <em>Imperativ</em>: "change" nicht "changed" oder "changes"</li>
+<li>Der erste Buchstabe wird <em>klein geschrieben</em></li>
+<li>Am Ende steht <em>kein Punkt</em></li>
+</ul>
+<h2 id="pull-request">Pull Request</h2>
+<h3 id="titel-und-beschreibung">Titel und Beschreibung</h3>
+<p>Ein Pull Request entspricht in der Regel mindestens einem Issue oder einer User Story. Da wir für die Versionierung und die Releases die <a href="https://github.com/marketplace/actions/release-please-action">release-please-action</a> verwenden, ist es sehr wichtig, dass der PR Titel korrekt geschrieben wird. Der Titel wird für die Commit Message des Merges übernommen. Deshalb muss er, wie unter <a href="#commits">Commits</a> definiert, entsprechend geschrieben werden; s. auch das Beispiel unter <a href="#branch">Branch</a>.
+Wird der Titel falsch geschrieben, wird der PR später nicht im Changelog oder in den Release Notes aufgelistet!</p>
+<p>In der Beschreibung wird immer der zugehörige Issue verlinkt. Dazu wird eines der <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests">Github-Schlüsselwörter</a> <code>resolves</code>, <code>closes</code> etc. gefolgt von der Issue Nummer.</p>
+<pre><code class="language-text">resolves #42
+</code></pre>
+<p>In diesem Beispiel wird der Issue Nr. 42 mit dem PR beidseitig verknüpft und nach dem Merge ebenfalls automatisch geschlossen.</p>
+<h3 id="label-optional">Label (optional)</h3>
+<p>Das Setzen eines Labels ist optional, ist aber sicher hilfreich beim Sortieren und Auffinden bestimmter Pull Requests. Im Release Prozess hat es jedenfalls keinen Einfluss mehr.</p>
+<ul>
+<li><strong>breaking</strong>: Breaking Changes.</li>
+<li><strong>enhancement</strong>: Neue Features.</li>
+<li><strong>bug</strong>: Bug fixes.</li>
+<li><strong>styling</strong> Style resp. Design Updates (keine Änderung am produktiven Code).</li>
+<li><strong>documentation</strong>: Änderungen an der Dokumentation.</li>
+<li><strong>testing</strong>: Alles mit Tests (keine Änderung am produktiven Code).</li>
+<li><strong>refactor</strong>: Simples Überarbeiten des Codes.</li>
+<li><strong>chore</strong>: Wartungsarbeiten, insbesondere Github betreffend (CI/CD) (keine Änderung am produktiven Code).</li>
+<li><strong>dependencies</strong>: Updates von Paketversionen.</li>
+</ul>
+<h3 id="entwurf">Entwurf</h3>
+<p>Bitte <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft">konvertiere den Pull Request zu einem Entwurf</a>
+so lange dieser nicht parat für den Review ist. Sobald dies der Fall ist, wird der <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review">Entwurfsstatus wieder entfernt</a>,
+klicke dazu auf die entsprechende Schaltfäche: "Ready for review".</p>
+<h3 id="geschutzter-branch">Geschützter Branch</h3>
+<p>Der Hauptbranch <code>main</code> in jedem Repository ist geschützt. Folgende Regeln müssen vor einem Merge eingehalten werden:</p>
+<ul>
+<li>Mindestens ein Code Review wird benötigt</li>
+<li>Status Checks:</li>
+<li>Branch muss von Seiten <code>main</code> aktualisiert sein</li>
+<li>Test- und Build-Prozess in den Github Actions (CI/CD) müssen erfolgreich sein</li>
+</ul>
+<p>Nach dem Mergen wird der entsprechende Branch automatisch gelöscht.</p>
+<h3 id="code-review">Code Review</h3>
+<ul>
+<li>Ein Reviewers soll neben dem Code, der Funktionalität auch die <a href="#titel-und-beschreibung">PR Titel Einstellungen</a> prüfen, damit <a href="#release-vorbereiten">Release-Please</a> einwandfrei funktioniert.</li>
+</ul>
+<h2 id="github-actions-cicd">GitHub Actions (CI/CD)</h2>
+<p>Wir benutzen <a href="https://github.com/features/actions">GitHub Actions</a>, um automatisch Tests, Releases und das Deployment durchzuführen.</p>
+<h3 id="tests">Tests</h3>
+<p>Mit jedem Push nach GitHub werden "Builds" und Tests ausgeführt. Diese müssen erfolgreich durchlaufen, bevor neuer Code in den Hauptbranch gemergt werden kann (s. <a href="#geschützter-branch">Geschützter Branch</a>).</p>
+<h3 id="release-vorbereiten">Release vorbereiten</h3>
+<p>Wir benutzen <a href="https://github.com/marketplace/actions/release-please-action">release-please-action</a>, um einen Release vorzubereiten. Dieses GH Action Skript erstellt automatisch die <code>CHANGELOG.md</code>-Datei, macht Releases und setzt die korrekte Versionsnummer z.B. im <code>package.json</code>. Release-Please arbeitet in zwei Schritten: Zuerst erstellt resp. aktualisiert die Action nach jedem Merge in den Hauptbranch einen sogenannten Release-PR. Wenn dieser PR dann gemergt wird, erstellt die Action einen Release-Tag und bildet daraus den Release selbst.
+Um einen sauberen Ablauf und übersichtliche Release Notes zu gewährleisten, ist das Beachten der oben erwähnten <a href="#commits">Commit-Regeln</a> in den <a href="#titel-und-beschreibung">PR Titeln</a> zwingend notwendig. 
+Kurz vor dem Release müssen die Discussions- und Issue-Templates, die eine Versionsauswahl anbieten (aktuell Bug in Issues und Test in Discussions), entsprechend der Version im Release-PR angepasst werden. Danach kann der Release erstellt werden.</p>
+<h3 id="release-erstellen">Release erstellen</h3>
+<p>Sobald wir für einen neuen Release bereit sind, wird der Release PR durchgesehen (Review) und daraufhin zusammengeführt (merge). Dadurch wird automatisch der entsrpechende Release publiziert und das Produkt innert kürzester Zeit bereitgestellt. Der Download wird dem <a href="https://github.com/av-dimag/ech-0160-dimag-ingest/releases/latest">Release angehängt</a>.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-08-31
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6df46069.min.js"></script>
+      
+    
+  </body>
+</html>
