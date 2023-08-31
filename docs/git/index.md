@@ -143,7 +143,8 @@ Mit jedem Push nach GitHub werden "Builds" und Tests ausgeführt. Diese müssen 
 ### Release vorbereiten
 
 Wir benutzen [release-please-action](https://github.com/marketplace/actions/release-please-action), um einen Release vorzubereiten. Dieses GH Action Skript erstellt automatisch die `CHANGELOG.md`-Datei, macht Releases und setzt die korrekte Versionsnummer z.B. im `package.json`. Release-Please arbeitet in zwei Schritten: Zuerst erstellt resp. aktualisiert die Action nach jedem Merge in den Hauptbranch einen sogenannten Release-PR. Wenn dieser PR dann gemergt wird, erstellt die Action einen Release-Tag und bildet daraus den Release selbst.
-Um einen sauberen Ablauf und übersichtliche Release Notes zu gewährleisten, ist das Beachten der oben erwähnten [Commit-Regeln](#commits) in den [PR Titeln](#titel-und-beschreibung) zwindend notwendig.
+Um einen sauberen Ablauf und übersichtliche Release Notes zu gewährleisten, ist das Beachten der oben erwähnten [Commit-Regeln](#commits) in den [PR Titeln](#titel-und-beschreibung) zwingend notwendig. 
+Kurz vor dem Release müssen die Discussions- und Issue-Templates, die eine Versionsauswahl anbieten (aktuell Bug in Issues und Test in Discussions), entsprechend der Version im Release-PR angepasst werden. Danach kann der Release erstellt werden.
 
 ### Release erstellen
 
